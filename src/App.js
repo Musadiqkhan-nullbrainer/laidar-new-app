@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { useLoader } from "@react-three/fiber";
+import { USDZLoader } from "three/examples/jsm/loaders/USDZLoader";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [usdz, setUsdz] = useState(null);
+
+  useLoader(USDZLoader, "./test.usdz", (loaded) => {
+    console.log(loaded, "loaded");
+    setUsdz(loaded.scene);
+  });
+
+  return <primitive object={usdz} />;
 }
 
 export default App;
