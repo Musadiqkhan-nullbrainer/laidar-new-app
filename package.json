@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "npm run copydeps && react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run copydeps && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "copydeps": "copyfiles -u 3 \"node_modules/three-usdz-loader/external/**/*\" public/wasm"
